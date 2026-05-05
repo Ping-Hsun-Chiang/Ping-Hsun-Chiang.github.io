@@ -6,8 +6,66 @@
     <description>Recent content in Ping-Hsun Chiang on Welcome To My World</description>
     <generator>Hugo -- 0.157.0</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 29 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/personal-website/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>從零打造全端電商：Next.js &#43; Supabase 開發紀錄</title>
+      <link>http://localhost:1313/personal-website/posts/devlog/</link>
+      <pubDate>Sat, 02 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/personal-website/posts/devlog/</guid>
+      <description>&lt;p&gt;第一次從頭到尾獨立完成一個有前台、後台、資料庫、部署的完整網站。這篇文章記錄開發過程、遇到的問題，以及這次學到的東西。&lt;/p&gt;
+&lt;h2 id=&#34;專案目標&#34;&gt;專案目標&lt;/h2&gt;
+&lt;p&gt;做一個服飾電商網站，功能包含：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;顧客前台&lt;/strong&gt;：瀏覽商品、選規格加入購物車、填資料結帳、選 7-11 取貨門市&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;管理後台&lt;/strong&gt;：登入保護、管理商品與規格（含庫存售價）、查看及處理訂單&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;技術選擇以「免費、現代、全端 TypeScript」為原則，最後選用 Next.js 16 + Supabase + Tailwind CSS 組合。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;開發歷程&#34;&gt;開發歷程&lt;/h2&gt;
+&lt;h3 id=&#34;phase-1環境建置--資料庫設計&#34;&gt;Phase 1：環境建置 &amp;amp; 資料庫設計&lt;/h3&gt;
+&lt;p&gt;第一步是在 WSL（Windows Subsystem for Linux）上把 Node.js、Git、GitHub CLI 都裝起來。聽起來很基本，但光這步就踩了不少坑（詳見下方）。&lt;/p&gt;
+&lt;p&gt;資料庫設計了四張表：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;products          商品主檔
+product_variants  商品規格（一個商品對應多個規格）
+orders            訂單主檔
+order_items       訂單明細（一筆訂單對應多個商品）
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;並在 Supabase 設定 Row Level Security（RLS）：匿名使用者只能讀商品、寫訂單；管理員才能做所有操作。&lt;/p&gt;
+&lt;h3 id=&#34;phase-2管理後台&#34;&gt;Phase 2：管理後台&lt;/h3&gt;
+&lt;p&gt;後台使用 Next.js 的 route group 區分「登入頁」和「受保護頁面」：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;admin/(auth)/login    不需驗證
+admin/(dashboard)/    layout 會檢查登入狀態
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;商品管理支援：新增 / 編輯 / 刪除商品，以及每個商品的多個規格（SKU、顏色、尺寸、庫存、售價）。全部使用 Server Actions 處理資料寫入，不需要自己架 API。&lt;/p&gt;
+&lt;h3 id=&#34;phase-3顧客前台&#34;&gt;Phase 3：顧客前台&lt;/h3&gt;
+&lt;p&gt;首頁列出所有上架商品，如果一個商品有多個規格價格不同，就顯示「NT$XXX 起」。&lt;/p&gt;
+&lt;p&gt;商品詳情頁的規格選擇邏輯：先選顏色再選尺寸，缺貨的規格自動變成灰色不可點擊。購物車用 Zustand 管理，並搭配 &lt;code&gt;persist&lt;/code&gt; middleware 存到 localStorage，重新整理後資料不會消失。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>基礎影像辨識 學習紀錄 (Part 3)</title>
+      <link>http://localhost:1313/personal-website/posts/cv_learning_3/</link>
+      <pubDate>Thu, 30 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/personal-website/posts/cv_learning_3/</guid>
+      <description>&lt;p&gt;在 &lt;a href=&#34;https://ping-hsun-chiang.github.io/personal-website/posts/cv_learning_2/&#34;&gt;上一篇&lt;/a&gt; 中，我們用 MNIST 手寫數字資料集訓練了第一個 CNN 模型，準確率輕鬆突破 98%。但現實世界的圖片可沒那麼簡單——這篇文章將挑戰更困難的 &lt;strong&gt;CIFAR-10&lt;/strong&gt; 彩色影像資料集，並引入幾個讓模型更強、更穩健的新技巧。&lt;/p&gt;
+&lt;h2 id=&#34;一cifar-10比-mnist-難在哪裡&#34;&gt;一、CIFAR-10：比 MNIST 難在哪裡？&lt;/h2&gt;
+&lt;p&gt;MNIST 是 28×28 的灰階圖，只要辨識 0 到 9 的數字；CIFAR-10 則是 32×32 的&lt;strong&gt;彩色圖&lt;/strong&gt;，要辨識 10 種截然不同的類別：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;airplane&lt;/code&gt;, &lt;code&gt;automobile&lt;/code&gt;, &lt;code&gt;bird&lt;/code&gt;, &lt;code&gt;cat&lt;/code&gt;, &lt;code&gt;deer&lt;/code&gt;, &lt;code&gt;dog&lt;/code&gt;, &lt;code&gt;frog&lt;/code&gt;, &lt;code&gt;horse&lt;/code&gt;, &lt;code&gt;ship&lt;/code&gt;, &lt;code&gt;truck&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;彩色圖帶來的第一個變化，就是通道數從 1 變成 3（RGB 三個色板）。這意味著輸入資料的第一個維度從 &lt;strong&gt;1 × H × W&lt;/strong&gt; 變成 &lt;strong&gt;3 × H × W&lt;/strong&gt;，模型的第一層卷積也必須從 &lt;code&gt;Conv2d(1, ...)&lt;/code&gt; 改為 &lt;code&gt;Conv2d(3, ...)&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;更根本的挑戰在於：貓跟狗長相相似、鳥跟飛機都有翅膀——視覺上的歧義讓分類難度大幅提升，光靠簡單的網路很容易過擬合。&lt;/p&gt;
+&lt;h2 id=&#34;二資料增強讓模型見多識廣&#34;&gt;二、資料增強：讓模型見多識廣&lt;/h2&gt;
+&lt;p&gt;對付過擬合的第一招，是在&lt;strong&gt;訓練集&lt;/strong&gt;上加入隨機的資料增強 (Data Augmentation)。增強的核心思想很直覺：&lt;strong&gt;同一張圖片，從不同角度、不同光線看，應該都要被辨識正確&lt;/strong&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;train_transform &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; transforms&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Compose([
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    transforms&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;RandomHorizontalFlip(),          &lt;span style=&#34;color:#75715e&#34;&gt;# 50% 機率水平翻轉&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    transforms&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;RandomCrop(&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, padding&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;),       &lt;span style=&#34;color:#75715e&#34;&gt;# 先補邊再隨機裁切&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    transforms&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ColorJitter(brightness&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0.2&lt;/span&gt;,      &lt;span style=&#34;color:#75715e&#34;&gt;# 隨機調整亮度 ±20%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                           contrast&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0.2&lt;/span&gt;),       &lt;span style=&#34;color:#75715e&#34;&gt;# 隨機調整對比 ±20%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    transforms&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ToTensor(),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    transforms&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Normalize((&lt;span style=&#34;color:#ae81ff&#34;&gt;0.4914&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0.4822&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0.4465&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                         (&lt;span style=&#34;color:#ae81ff&#34;&gt;0.2023&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0.1994&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0.2010&lt;/span&gt;)),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;重點是：&lt;strong&gt;測試集絕對不能做隨機增強&lt;/strong&gt;，只做標準化。這樣才能確保評估結果的一致性與公平性。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>基礎影像辨識 學習紀錄 (Part 2)</title>
       <link>http://localhost:1313/personal-website/posts/cv_learning_2/</link>
