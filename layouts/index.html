@@ -32,7 +32,7 @@
   </section>
   {{ end }}
 
-  {{/* ── 雙欄：左 Skills/Education/Contact，右 Experience */}}
+  {{/* ── Two-column: Left (Skills/Education/Contact), Right (Experience + Projects) */}}
   <div class="resume-body">
     <div class="resume-left">
 
@@ -83,7 +83,7 @@
       </section>
       {{ end }}
 
-    </div>{{/* end resume-left */}}
+    </div>
 
     <div class="resume-right">
 
@@ -104,49 +104,170 @@
       </section>
       {{ end }}
 
-      {{/* ── PROJECTS（全寬時間線）────────────────────────────── */}}
+      {{/* ── PROJECTS — directly below Experience ── */}}
       {{ with .Site.Params.projects }}
-      <section class="resume-section resume-projects-full" id="projects">
+      <section class="resume-section resume-projects-section" id="projects">
         <h2 class="section-title">專案 Projects</h2>
-        <p class="proj-section-sub">端到端開發 · AI 模型實作 · 自動化工程 · 全端建置</p>
 
-        <div class="proj-timeline">
-          {{ range . }}
-          <div class="proj-item">
-
-            {{/* 左側時間軸 */}}
-            <div class="proj-axis">
-              <div class="proj-dot{{ if .private }} proj-dot--private{{ end }}"></div>
-              <div class="proj-line"></div>
+        {{/* Featured thesis */}}
+        {{ range . }}{{ if .featured }}
+        <div class="proj-featured proj-clickable"
+             data-name="{{ .name }}"
+             data-desc="{{ .desc }}"
+             data-tags="{{ range .tags }}{{ . }}|||{{ end }}"
+             data-url="{{ .url }}"
+             data-date="{{ .date }}">
+          <div class="proj-featured-badge">碩士論文 · Featured</div>
+          <div class="proj-featured-body">
+            <div class="proj-featured-header">
+              <h3 class="proj-featured-name">{{ .name }}</h3>
+              <span class="proj-date">{{ .date }}</span>
             </div>
+            <p class="proj-featured-desc proj-desc-clamp">{{ .desc }}</p>
+            {{ with .tags }}
+            <div class="proj-tags">
+              {{ range . }}<span class="proj-tag">{{ . }}</span>{{ end }}
+            </div>
+            {{ end }}
+            <div class="proj-card-actions">
+              <button class="proj-read-more" type="button">查看詳情 →</button>
+            </div>
+          </div>
+        </div>
+        {{ end }}{{ end }}
 
-            {{/* 右側卡片 */}}
-            <div class="proj-card">
+        {{/* Filter buttons */}}
+        <div class="proj-filters" role="group" aria-label="專案分類篩選">
+          <button class="proj-filter-btn active" data-cat="all">全部</button>
+          <button class="proj-filter-btn" data-cat="ai-ml">AI · ML</button>
+          <button class="proj-filter-btn" data-cat="game">遊戲開發</button>
+          <button class="proj-filter-btn" data-cat="web">網頁開發</button>
+          <button class="proj-filter-btn" data-cat="data">資料分析</button>
+          <button class="proj-filter-btn" data-cat="auto">自動化</button>
+        </div>
+
+        {{/* Project card grid */}}
+        <div class="proj-grid" id="projGrid">
+          {{ range . }}{{ if not .featured }}
+          <div class="proj-grid-item" data-cat="{{ .category }}">
+            <div class="proj-card proj-clickable"
+                 data-name="{{ .name }}"
+                 data-desc="{{ .desc }}"
+                 data-tags="{{ range .tags }}{{ . }}|||{{ end }}"
+                 data-url="{{ .url }}"
+                 data-date="{{ .date }}"
+                 data-private="{{ .private }}">
               <div class="proj-meta">
                 {{ with .date }}<span class="proj-date">{{ . }}</span>{{ end }}
                 {{ if .private }}<span class="proj-badge">🔒 Private</span>{{ end }}
-                {{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener" class="proj-ext-link">↗ 查看</a>{{ end }}
               </div>
-
               <p class="proj-name">{{ .name }}</p>
-              <p class="proj-desc">{{ .desc }}</p>
-
+              <p class="proj-desc proj-desc-clamp">{{ .desc }}</p>
               {{ with .tags }}
               <div class="proj-tags">
                 {{ range . }}<span class="proj-tag">{{ . }}</span>{{ end }}
               </div>
               {{ end }}
+              <div class="proj-card-actions">
+                <button class="proj-read-more" type="button">查看詳情</button>
+              </div>
             </div>
-
           </div>
-          {{ end }}
-          <div class="proj-end-dot"></div>
+          {{ end }}{{ end }}
         </div>
+
       </section>
       {{ end }}
 
-    </div>{{/* end resume-right */}}
-  </div>{{/* end resume-body */}}
+    </div>
+  </div>
 
-</div>{{/* end resume-container */}}
+</div>
+
+{{/* ── PROJECT MODAL ─────────────────────────────────── */}}
+<div class="proj-modal-overlay" id="projModalOverlay" aria-hidden="true">
+  <div class="proj-modal" role="dialog" aria-modal="true" aria-labelledby="projModalTitle">
+    <div class="proj-modal-header">
+      <span class="proj-modal-date" id="projModalDate"></span>
+      <button class="proj-modal-close" id="projModalClose" aria-label="關閉">&#x2715;</button>
+    </div>
+    <h3 class="proj-modal-title" id="projModalTitle"></h3>
+    <div class="proj-modal-tags" id="projModalTags"></div>
+    <p class="proj-modal-desc" id="projModalDesc"></p>
+    <div class="proj-modal-footer" id="projModalFooter">
+      <a class="btn" id="projModalLink" target="_blank" rel="noopener">↗ 前往專案</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  /* ── Filter ── */
+  var filterBtns  = document.querySelectorAll('.proj-filter-btn');
+  var filterItems = document.querySelectorAll('.proj-grid-item');
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      filterBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var cat = btn.dataset.cat;
+      filterItems.forEach(function (item) {
+        item.style.display = (cat === 'all' || item.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+
+  /* ── Modal ── */
+  var overlay  = document.getElementById('projModalOverlay');
+  var closeBtn = document.getElementById('projModalClose');
+  var elTitle  = document.getElementById('projModalTitle');
+  var elDesc   = document.getElementById('projModalDesc');
+  var elTags   = document.getElementById('projModalTags');
+  var elDate   = document.getElementById('projModalDate');
+  var elLink   = document.getElementById('projModalLink');
+  var elFooter = document.getElementById('projModalFooter');
+
+  function openModal(el) {
+    elTitle.textContent = el.dataset.name || '';
+    elDesc.textContent  = el.dataset.desc || '';
+    elDate.textContent  = el.dataset.date || '';
+    elTags.innerHTML = '';
+    (el.dataset.tags || '').split('|||').forEach(function (t) {
+      t = t.trim();
+      if (!t) return;
+      var s = document.createElement('span');
+      s.className = 'proj-tag';
+      s.textContent = t;
+      elTags.appendChild(s);
+    });
+    var url = el.dataset.url || '';
+    if (url) { elLink.href = url; elFooter.style.display = ''; }
+    else      { elFooter.style.display = 'none'; }
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+  }
+
+  document.querySelectorAll('.proj-clickable').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      if (e.target.closest('a[href]')) return;
+      openModal(el);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
+})();
+</script>
 {{- end }}

@@ -2,6 +2,7 @@
 title: "Slot Game Probability Model"
 date: 2026-04-23
 draft: false
+category: "專案紀錄"
 ---
 
 ## 一、設計目標

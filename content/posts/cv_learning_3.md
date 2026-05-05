@@ -2,6 +2,7 @@
 title: "基礎影像辨識 學習紀錄 (Part 3)"
 date: 2026-04-30
 draft: false
+category: "學習筆記"
 ---
 
 在 [上一篇](https://ping-hsun-chiang.github.io/personal-website/posts/cv_learning_2/) 中，我們用 MNIST 手寫數字資料集訓練了第一個 CNN 模型，準確率輕鬆突破 98%。但現實世界的圖片可沒那麼簡單——這篇文章將挑戰更困難的 **CIFAR-10** 彩色影像資料集，並引入幾個讓模型更強、更穩健的新技巧。

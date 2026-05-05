@@ -2,6 +2,7 @@
 title: "Link To Github (Local -> Remote)"
 date: 2026-04-22
 draft: false
+category: "其他"
 ---
 
 ## 背景

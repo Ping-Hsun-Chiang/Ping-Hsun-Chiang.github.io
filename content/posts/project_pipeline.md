@@ -2,6 +2,7 @@
 title: "Project Pipeline"
 date: 2026-04-24
 draft: false
+category: "專案紀錄"
 ---
 
 ## 背景

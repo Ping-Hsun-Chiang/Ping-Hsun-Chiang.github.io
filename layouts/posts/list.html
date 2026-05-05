@@ -1,0 +1,53 @@
+{{- define "main" }}
+<div class="posts-page">
+
+  <div class="posts-header">
+    <h1 class="posts-title">文章 Posts</h1>
+    <p class="posts-sub">學習筆記 · 專案紀錄 · 技術分享</p>
+  </div>
+
+  <div class="posts-filters" role="group" aria-label="文章分類篩選">
+    <button class="posts-filter-btn active" data-cat="all">全部</button>
+    <button class="posts-filter-btn" data-cat="學習筆記">學習筆記</button>
+    <button class="posts-filter-btn" data-cat="專案紀錄">專案紀錄</button>
+    <button class="posts-filter-btn" data-cat="其他">其他</button>
+  </div>
+
+  <div class="posts-grid" id="postsList">
+    {{ range .Pages }}
+    <article class="post-card" data-cat="{{ .Params.category | default "其他" }}">
+      <a href="{{ .Permalink }}" class="post-card-link">
+        <div class="post-card-meta">
+          <span class="post-cat-badge">{{ .Params.category | default "其他" }}</span>
+          <span class="post-date">{{ .Date.Format "2006.01.02" }}</span>
+        </div>
+        <h2 class="post-card-title">{{ .Title }}</h2>
+        <p class="post-card-summary">{{ .Summary | plainify | truncate 120 "…" }}</p>
+        <div class="post-card-footer">
+          <span class="post-card-arrow">閱讀文章 →</span>
+        </div>
+      </a>
+    </article>
+    {{ end }}
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var btns  = document.querySelectorAll('.posts-filter-btn');
+  var items = document.querySelectorAll('.post-card');
+
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var cat = btn.dataset.cat;
+      items.forEach(function (item) {
+        item.style.display = (cat === 'all' || item.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+})();
+</script>
+{{- end }}

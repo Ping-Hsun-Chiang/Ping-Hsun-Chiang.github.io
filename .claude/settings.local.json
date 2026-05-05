@@ -2,7 +2,20 @@
   "permissions": {
     "allow": [
       "Bash(hugo server *)",
-      "Bash(curl -s http://localhost:1313/personal-website/posts/link_to_gitub/)"
+      "Bash(curl -s http://localhost:1313/personal-website/posts/link_to_gitub/)",
+      "Bash(Get-ChildItem -Path \"D:\\\\Work\\\\personal-website\" -Recurse -Force)",
+      "Bash(Select-Object -Property FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "Bash(Format-Table -AutoSize)",
+      "Bash(hugo --gc --minify)",
+      "Bash(Start-Process hugo *)",
+      "Bash(Select-Object -ExpandProperty Id)",
+      "Bash(echo \"Server PID: $!\")",
+      "Bash(Get-ChildItem -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "PowerShell(head *)",
+      "Bash(curl -s http://localhost:1313/personal-website/posts/)",
+      "Bash(hugo --minify)"
     ]
   }
 }

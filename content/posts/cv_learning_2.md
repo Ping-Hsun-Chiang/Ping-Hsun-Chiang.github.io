@@ -2,6 +2,7 @@
 title: "基礎影像辨識 學習紀錄 (Part 2)"
 date: 2026-04-29
 draft: false
+category: "學習筆記"
 ---
 
 在 [上一篇](https://ping-hsun-chiang.github.io/personal-website/posts/cv_learning_1/) 中，我們學會了如何讀取並操作影像矩陣。但要讓電腦真正「看懂」圖片裡是什麼，我們就需要請出深度學習的主角：**卷積神經網路 (CNN, Convolutional Neural Network)**。

@@ -2,6 +2,7 @@
 title: "Golang Programming Learning Journey"
 date: 2026-04-10
 draft: false
+category: "學習筆記"
 ---
 
 ## 背景與開發環境
