@@ -2,17 +2,96 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Ping-Hsun Chiang on Welcome To My World</title>
-    <link>http://localhost:56941/personal-website/</link>
+    <link>http://localhost:1313/personal-website/</link>
     <description>Recent content in Ping-Hsun Chiang on Welcome To My World</description>
     <generator>Hugo -- 0.157.0</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 02 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:56941/personal-website/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/personal-website/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Github Commit Message</title>
+      <link>http://localhost:1313/personal-website/posts/github_commit_message/</link>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/personal-website/posts/github_commit_message/</guid>
+      <description>&lt;p&gt;在團隊協作或個人專案管理中，保持乾淨且一致的 Git Commit 紀錄是非常重要的。本篇整理了常見的 Git Commit Message 分類，採用 &lt;code&gt;[分類] 說明&lt;/code&gt;（即 &lt;code&gt;[xxx] yyy&lt;/code&gt;）的格式，並根據變更的「性質」將其分為五大類，方便在提交程式碼或更新資料時快速對照。&lt;/p&gt;
+&lt;h2 id=&#34;撰寫原則&#34;&gt;撰寫原則&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;格式：&lt;/strong&gt; &lt;code&gt;[分類] 具體做了什麼&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;動詞開頭：&lt;/strong&gt; 說明部分請使用明確的動詞（如：新增、修正、更新、重構）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;簡明扼要：&lt;/strong&gt; 盡量控制在 50 個字元內，讓其他人一眼看懂變更目的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;一-功能與邏輯修復-features--fixes&#34;&gt;一、 功能與邏輯修復 (Features &amp;amp; Fixes)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;直接影響網站功能、使用者體驗或業務邏輯的改動。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;分類 &lt;code&gt;[xxx]&lt;/code&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;中文說明&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;適用情境 (什麼時候用？)&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;範例 &lt;code&gt;yyy&lt;/code&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;&lt;code&gt;[FEAT]&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;新增功能&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;開發了全新的功能，或是對使用者來說有感的新項目上線。&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;新增購物車結帳功能&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;&lt;code&gt;[FIX]&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;修復問題&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;程式碼有 Bug，或是修正了導致系統未按預期運作的錯誤。&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;修正商品頁面圖片無法顯示的問題&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;&lt;code&gt;[HOTFIX]&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;緊急修復&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;正式環境發生嚴重災情，必須立刻修復並發布。&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;修正結帳金額計算錯誤的嚴重漏洞&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;二-專案維護與文件-maintenance--docs&#34;&gt;二、 專案維護與文件 (Maintenance &amp;amp; Docs)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;與程式碼邏輯無關，純粹是靜態資料更新、環境維護或文件補充。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;分類 &lt;code&gt;[xxx]&lt;/code&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;中文說明&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;適用情境 (什麼時候用？)&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;範例 &lt;code&gt;yyy&lt;/code&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;&lt;code&gt;[CHORE]&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;日常維護&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;(最適合靜態資料更新)&lt;/strong&gt; 更新商品資訊、修改不影響建置的設定檔、整理專案結構等雜務。&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;更新 2026 夏季商品資訊與價格&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;&lt;code&gt;[DOCS]&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;文件變更&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;僅修改文件內容，例如 &lt;code&gt;README.md&lt;/code&gt;、API 串接文件、或是新增程式碼註解。&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;更新資料庫架構說明文件&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;三-程式碼品質與效能-code-quality--performance&#34;&gt;三、 程式碼品質與效能 (Code Quality &amp;amp; Performance)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;沒有新增功能，也沒有修復 Bug，純粹是對現有程式碼進行體質上的優化。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>從零打造全端電商：Next.js &#43; Supabase 開發紀錄</title>
-      <link>http://localhost:56941/personal-website/posts/devlog/</link>
+      <link>http://localhost:1313/personal-website/posts/devlog/</link>
       <pubDate>Sat, 02 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:56941/personal-website/posts/devlog/</guid>
+      <guid>http://localhost:1313/personal-website/posts/devlog/</guid>
       <description>&lt;p&gt;第一次從頭到尾獨立完成一個有前台、後台、資料庫、部署的完整網站。這篇文章記錄開發過程、遇到的問題，以及這次學到的東西。&lt;/p&gt;
 &lt;h2 id=&#34;專案目標&#34;&gt;專案目標&lt;/h2&gt;
 &lt;p&gt;做一個服飾電商網站，功能包含：&lt;/p&gt;
@@ -42,9 +121,9 @@ admin/(dashboard)/    layout 會檢查登入狀態
     </item>
     <item>
       <title>基礎影像辨識 學習紀錄 (Part 3)</title>
-      <link>http://localhost:56941/personal-website/posts/cv_learning_3/</link>
+      <link>http://localhost:1313/personal-website/posts/cv_learning_3/</link>
       <pubDate>Thu, 30 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:56941/personal-website/posts/cv_learning_3/</guid>
+      <guid>http://localhost:1313/personal-website/posts/cv_learning_3/</guid>
       <description>&lt;p&gt;在 &lt;a href=&#34;https://ping-hsun-chiang.github.io/personal-website/posts/cv_learning_2/&#34;&gt;上一篇&lt;/a&gt; 中，我們用 MNIST 手寫數字資料集訓練了第一個 CNN 模型，準確率輕鬆突破 98%。但現實世界的圖片可沒那麼簡單——這篇文章將挑戰更困難的 &lt;strong&gt;CIFAR-10&lt;/strong&gt; 彩色影像資料集，並引入幾個讓模型更強、更穩健的新技巧。&lt;/p&gt;
 &lt;h2 id=&#34;一cifar-10比-mnist-難在哪裡&#34;&gt;一、CIFAR-10：比 MNIST 難在哪裡？&lt;/h2&gt;
 &lt;p&gt;MNIST 是 28×28 的灰階圖，只要辨識 0 到 9 的數字；CIFAR-10 則是 32×32 的&lt;strong&gt;彩色圖&lt;/strong&gt;，要辨識 10 種截然不同的類別：&lt;/p&gt;
@@ -68,9 +147,9 @@ admin/(dashboard)/    layout 會檢查登入狀態
     </item>
     <item>
       <title>基礎影像辨識 學習紀錄 (Part 2)</title>
-      <link>http://localhost:56941/personal-website/posts/cv_learning_2/</link>
+      <link>http://localhost:1313/personal-website/posts/cv_learning_2/</link>
       <pubDate>Wed, 29 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:56941/personal-website/posts/cv_learning_2/</guid>
+      <guid>http://localhost:1313/personal-website/posts/cv_learning_2/</guid>
       <description>&lt;p&gt;在 &lt;a href=&#34;https://ping-hsun-chiang.github.io/personal-website/posts/cv_learning_1/&#34;&gt;上一篇&lt;/a&gt; 中，我們學會了如何讀取並操作影像矩陣。但要讓電腦真正「看懂」圖片裡是什麼，我們就需要請出深度學習的主角：&lt;strong&gt;卷積神經網路 (CNN, Convolutional Neural Network)&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;這篇文章將透過經典的 MNIST 手寫數字資料集，紀錄訓練出人生第一個影像辨識模型的完整流程。&lt;/p&gt;
 &lt;h2 id=&#34;一資料前處理把圖片變成神經網路喜歡的樣子&#34;&gt;一、資料前處理：把圖片變成神經網路喜歡的樣子&lt;/h2&gt;
@@ -101,11 +180,11 @@ admin/(dashboard)/    layout 會檢查登入狀態
     </item>
     <item>
       <title>基礎影像辨識 學習紀錄 (Part 1)</title>
-      <link>http://localhost:56941/personal-website/posts/cv_learning_1/</link>
+      <link>http://localhost:1313/personal-website/posts/cv_learning_1/</link>
       <pubDate>Tue, 28 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:56941/personal-website/posts/cv_learning_1/</guid>
+      <guid>http://localhost:1313/personal-website/posts/cv_learning_1/</guid>
       <description>&lt;p&gt;在開始接觸電腦視覺（Computer Vision）與影像處理時，我們必須先了解「電腦是如何看一張圖片的」。本文將透過一張簡單的貓咪測試圖，來拆解影像背後的資料結構與基礎觀念。&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;網路上的貓&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:56941/personal-website/posts/cv_learning/test_cat.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;網路上的貓&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/personal-website/posts/cv_learning/test_cat.jpg&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;一影像的維度h--w--c&#34;&gt;一、影像的維度：H × W × C&lt;/h2&gt;
 &lt;p&gt;在程式碼中，一張圖片通常會被轉換為矩陣（NumPy Array），並具有三個主要維度：&lt;strong&gt;高度 (Height) $\times$ 寬度 (Width) $\times$ 通道數 (Channel)&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;H 和 W 很好理解，就是圖片的長寬像素大小，而 &lt;strong&gt;C (Color Channel，顏色通道)&lt;/strong&gt; 則決定了圖片的色彩構成：&lt;/p&gt;
@@ -114,7 +193,7 @@ admin/(dashboard)/    layout 會檢查登入狀態
 &lt;li&gt;&lt;strong&gt;C = 3 (標準彩色圖片)&lt;/strong&gt;：由 R (紅)、G (綠)、B (藍) 三個通道組成。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;C = 4 (帶有透明度的圖片)&lt;/strong&gt;：除了 RGB，還加上 A (Alpha) 通道來記錄透明度（例如去背的 PNG 圖檔）。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt=&#34;圖片拆解&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:56941/personal-website/posts/cv_learning/result_basics.png&#34;&gt;
+&lt;p&gt;&lt;img alt=&#34;圖片拆解&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/personal-website/posts/cv_learning/result_basics.png&#34;&gt;
 &lt;em&gt;(透過程式將原圖轉換為灰階、縮放，以及拆分為獨立的 R、G、B 通道)&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&#34;二資料型態與像素值什麼是-uint8&#34;&gt;二、資料型態與像素值：什麼是 uint8？&lt;/h2&gt;
 &lt;p&gt;當我們檢查影像矩陣的資料型態時，最常看見的是 &lt;code&gt;uint8&lt;/code&gt; (Unsigned 8-bit Integer，無號 8 位元整數)。這代表圖片中每一個像素的數值，都是一個介於 &lt;strong&gt;0 到 255&lt;/strong&gt; 之間的正整數。&lt;/p&gt;
@@ -126,9 +205,9 @@ admin/(dashboard)/    layout 會檢查登入狀態
     </item>
     <item>
       <title>Project Pipeline</title>
-      <link>http://localhost:56941/personal-website/posts/project_pipeline/</link>
+      <link>http://localhost:1313/personal-website/posts/project_pipeline/</link>
       <pubDate>Fri, 24 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:56941/personal-website/posts/project_pipeline/</guid>
+      <guid>http://localhost:1313/personal-website/posts/project_pipeline/</guid>
       <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 &lt;p&gt;實務上，推進一個專案可能會經由一些 Pipeline 所構成，以下我們撰寫一個具有 &lt;strong&gt;高度自動化、模組化且易於維護的系統&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;P.S. 本文將會根據參與實務專案的過程進行補充與修正。&lt;/p&gt;
@@ -158,9 +237,9 @@ admin/(dashboard)/    layout 會檢查登入狀態
     </item>
     <item>
       <title>Slot Game Probability Model</title>
-      <link>http://localhost:56941/personal-website/posts/game_probability_model/</link>
+      <link>http://localhost:1313/personal-website/posts/game_probability_model/</link>
       <pubDate>Thu, 23 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:56941/personal-website/posts/game_probability_model/</guid>
+      <guid>http://localhost:1313/personal-website/posts/game_probability_model/</guid>
       <description>&lt;h2 id=&#34;一設計目標&#34;&gt;一、設計目標&lt;/h2&gt;
 &lt;p&gt;一個完整的 Slot 遊戲數學模型必須在「玩家體驗」與「公司風控」之間取得精確平衡。本文以下列設計目標為起點，從數學推導到程式驗證，完整呈現整個建模流程。&lt;/p&gt;
 &lt;table&gt;
@@ -216,9 +295,9 @@ admin/(dashboard)/    layout 會檢查登入狀態
     </item>
     <item>
       <title>Link To Github (Local -&gt; Remote)</title>
-      <link>http://localhost:56941/personal-website/posts/link_to_gitub/</link>
+      <link>http://localhost:1313/personal-website/posts/link_to_gitub/</link>
       <pubDate>Wed, 22 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:56941/personal-website/posts/link_to_gitub/</guid>
+      <guid>http://localhost:1313/personal-website/posts/link_to_gitub/</guid>
       <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 &lt;p&gt;以 Windows 電腦及 Windows PowerShell 為例，將流程分為兩個情境：&lt;/p&gt;
 &lt;ul&gt;
@@ -258,9 +337,9 @@ git commit -m &#34;Initial commit&#34;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/
     </item>
     <item>
       <title>Golang Programming Learning Journey</title>
-      <link>http://localhost:56941/personal-website/posts/golang_learning/</link>
+      <link>http://localhost:1313/personal-website/posts/golang_learning/</link>
       <pubDate>Fri, 10 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:56941/personal-website/posts/golang_learning/</guid>
+      <guid>http://localhost:1313/personal-website/posts/golang_learning/</guid>
       <description>&lt;h2 id=&#34;背景與開發環境&#34;&gt;背景與開發環境&lt;/h2&gt;
 &lt;p&gt;因為手邊目前僅有一台老舊的 Acer 筆電，為了在硬體資源受限的情況下維持高效的開發節奏，我採用了「在 WSL (Linux) 環境中撰寫程式碼，並編譯為 Windows 原生執行檔」的開發策略。&lt;/p&gt;
 &lt;p&gt;這種方式讓我既能享受 Linux 強大且靈活的終端機與開發工具鏈（如 Git, Docker），又能直接在 Windows 主機上測試最終產物。&lt;/p&gt;
@@ -292,9 +371,9 @@ git commit -m &#34;Initial commit&#34;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/
     </item>
     <item>
       <title></title>
-      <link>http://localhost:56941/personal-website/interviews/</link>
+      <link>http://localhost:1313/personal-website/interviews/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:56941/personal-website/interviews/</guid>
+      <guid>http://localhost:1313/personal-website/interviews/</guid>
       <description>&lt;div class=&#34;iv-card&#34;&gt;
   &lt;div class=&#34;iv-card-header&#34;&gt;
     &lt;div class=&#34;iv-company&#34;&gt;立大資訊網路股份有限公司&lt;/div&gt;
@@ -452,9 +531,9 @@ git commit -m &#34;Initial commit&#34;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/
     </item>
     <item>
       <title>鞋槓青年</title>
-      <link>http://localhost:56941/personal-website/volleyball-team/</link>
+      <link>http://localhost:1313/personal-website/volleyball-team/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:56941/personal-website/volleyball-team/</guid>
+      <guid>http://localhost:1313/personal-website/volleyball-team/</guid>
       <description>&lt;h2 id=&#34;關於球隊&#34;&gt;關於球隊&lt;/h2&gt;
 &lt;p&gt;楊克武&lt;/p&gt;
 &lt;hr&gt;
@@ -475,7 +554,7 @@ git commit -m &#34;Initial commit&#34;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/
 &lt;li&gt;賽果：公開男子組 - 八強&lt;/li&gt;
 &lt;li&gt;參賽人員：姜秉勳、謝昱陞、邱明鋒、曾聖倫、楊克武、吳柄承、曾瑋群&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;http://localhost:56941/personal-website/volleyball_team/2025奇萊盃_合照.jpg&#34; style=&#34;width: 80%; max-width: 700px; display: block; margin: 0 auto;&#34;&gt;
+&lt;img src=&#34;http://localhost:1313/personal-website/volleyball_team/2025奇萊盃_合照.jpg&#34; style=&#34;width: 80%; max-width: 700px; display: block; margin: 0 auto;&#34;&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;2025-南天宮金媽祖盃-in-羅東國中&#34;&gt;2025 南天宮金媽祖盃 in 羅東國中&lt;/h2&gt;
 &lt;ul&gt;
@@ -483,7 +562,7 @@ git commit -m &#34;Initial commit&#34;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/
 &lt;li&gt;賽果：社會男子組 - 亞軍 🥈&lt;/li&gt;
 &lt;li&gt;參賽人員：姜秉勳、曾聖倫、湯皓翔、李淯紘、李浩然、鄭宇恩、周子宸、陳子帆、潘星辰、蔡行揚、楊克武、藍翊愷&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;http://localhost:56941/personal-website/volleyball_team/2025金媽祖盃_合照.jpg&#34; style=&#34;width: 80%; max-width: 700px; display: block; margin: 0 auto;&#34;&gt;
+&lt;img src=&#34;http://localhost:1313/personal-website/volleyball_team/2025金媽祖盃_合照.jpg&#34; style=&#34;width: 80%; max-width: 700px; display: block; margin: 0 auto;&#34;&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;2025-羅東主委盃-in-宜蘭大學&#34;&gt;2025 羅東主委盃 in 宜蘭大學&lt;/h2&gt;
 &lt;ul&gt;
@@ -491,31 +570,31 @@ git commit -m &#34;Initial commit&#34;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/
 &lt;li&gt;賽果：社會男子組 - 殿軍&lt;/li&gt;
 &lt;li&gt;參賽人員：姜秉勳、魏冠杰、蔡宗岳、詹詠鈞、朱凱逸、湯皓翔、張顥耀、范廷育、陳泰鋐&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;http://localhost:56941/personal-website/volleyball_team/2025羅東主委盃_合照.jpg&#34; style=&#34;width: 80%; max-width: 700px; display: block; margin: 0 auto;&#34;&gt;
+&lt;img src=&#34;http://localhost:1313/personal-website/volleyball_team/2025羅東主委盃_合照.jpg&#34; style=&#34;width: 80%; max-width: 700px; display: block; margin: 0 auto;&#34;&gt;
 &lt;hr&gt;
 &lt;!-- 
 單張大圖 
-&lt;img src=&#34;http://localhost:56941/personal-website/volleyball_team/photo.jpg&#34; alt=&#34;描述&#34;&gt;
+&lt;img src=&#34;http://localhost:1313/personal-website/volleyball_team/photo.jpg&#34; alt=&#34;描述&#34;&gt;
 
 兩張並排
 &lt;div class=&#34;vb-2col&#34;&gt;
-  &lt;img src=&#34;http://localhost:56941/personal-website/volleyball_team/photo1.jpg&#34; alt=&#34;&#34;&gt;
-  &lt;img src=&#34;http://localhost:56941/personal-website/volleyball_team/photo2.jpg&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/personal-website/volleyball_team/photo1.jpg&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/personal-website/volleyball_team/photo2.jpg&#34; alt=&#34;&#34;&gt;
 &lt;/div&gt;
 
 三張並排
 &lt;div class=&#34;vb-3col&#34;&gt;
-  &lt;img src=&#34;http://localhost:56941/personal-website/volleyball_team/photo1.jpg&#34; alt=&#34;&#34;&gt;
-  &lt;img src=&#34;http://localhost:56941/personal-website/volleyball_team/photo2.jpg&#34; alt=&#34;&#34;&gt;
-  &lt;img src=&#34;http://localhost:56941/personal-website/volleyball_team/photo3.jpg&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/personal-website/volleyball_team/photo1.jpg&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/personal-website/volleyball_team/photo2.jpg&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/personal-website/volleyball_team/photo3.jpg&#34; alt=&#34;&#34;&gt;
 &lt;/div&gt;
 
 一大兩小
 &lt;div class=&#34;vb-1-2&#34;&gt;
-  &lt;img src=&#34;http://localhost:56941/personal-website/volleyball_team/main.jpg&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/personal-website/volleyball_team/main.jpg&#34; alt=&#34;&#34;&gt;
   &lt;div class=&#34;vb-1-2-right&#34;&gt;
-    &lt;img src=&#34;http://localhost:56941/personal-website/volleyball_team/photo2.jpg&#34; alt=&#34;&#34;&gt;
-    &lt;img src=&#34;http://localhost:56941/personal-website/volleyball_team/photo3.jpg&#34; alt=&#34;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/personal-website/volleyball_team/photo2.jpg&#34; alt=&#34;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/personal-website/volleyball_team/photo3.jpg&#34; alt=&#34;&#34;&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 --&gt;</description>
