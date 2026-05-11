@@ -2,9 +2,8 @@
 """
 Sync GitHub repositories to data/projects.json.
 
-Fetches all repos owned by the user (public + private), compares with
-data/tracked_repos.json, and appends placeholder entries for any new repos.
-Other fields are left blank for manual completion.
+Compares GitHub repos against the 'github_repo' field in each project entry.
+Appends a placeholder entry for any repo not yet tracked.
 """
 
 import json
@@ -14,7 +13,6 @@ from datetime import datetime, timezone
 
 GITHUB_USERNAME = "Ping-Hsun-Chiang"
 DATA_FILE = "data/projects.json"
-TRACKED_FILE = "data/tracked_repos.json"
 TOKEN = os.environ["GH_PAT"]
 
 
@@ -53,38 +51,39 @@ def save_json(path, data):
         f.write("\n")
 
 
+def get_known_repos(projects):
+    return {p["github_repo"].lower() for p in projects if p.get("github_repo")}
+
+
 def main():
     projects = load_json(DATA_FILE)
-    tracked = load_json(TRACKED_FILE)
-    tracked_lower = {name.lower() for name in tracked}
+    known = get_known_repos(projects)
 
     repos = fetch_all_repos()
     added = []
 
     for repo in repos:
-        name = repo["name"]
-        if name.lower() in tracked_lower:
+        if repo["name"].lower() in known:
             continue
 
         now = datetime.now(timezone.utc)
         projects.append({
             "date": f"{now.year}.{now.month:02d}",
             "category": "",
-            "name": name,
+            "name": repo["name"],
             "desc": "",
             "url": repo["html_url"],
             "tags": [],
             "featured": False,
             "private": repo["private"],
+            "github_repo": repo["name"],
         })
-        tracked.append(name)
-        tracked_lower.add(name.lower())
-        added.append(name)
-        print(f"  + {name}")
+        known.add(repo["name"].lower())
+        added.append(repo["name"])
+        print(f"  + {repo['name']}")
 
     if added:
         save_json(DATA_FILE, projects)
-        save_json(TRACKED_FILE, sorted(tracked, key=str.lower))
         print(f"\nAdded {len(added)} new repo(s).")
     else:
         print("No new repos found.")
