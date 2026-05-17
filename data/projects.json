@@ -288,5 +288,16 @@
     "featured": false,
     "private": false,
     "github_repo": "egg-yolk-pastry-store"
+  },
+  {
+    "date": "2026.05",
+    "category": "",
+    "name": "lto539",
+    "desc": "",
+    "url": "https://github.com/Ping-Hsun-Chiang/lto539",
+    "tags": [],
+    "featured": false,
+    "private": false,
+    "github_repo": "lto539"
   }
 ]
