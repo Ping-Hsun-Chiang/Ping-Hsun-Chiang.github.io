@@ -310,5 +310,16 @@
     "featured": false,
     "private": false,
     "github_repo": "00631L-monitor"
+  },
+  {
+    "date": "2026.07",
+    "category": "",
+    "name": "00685L-monitor",
+    "desc": "",
+    "url": "https://github.com/Ping-Hsun-Chiang/00685L-monitor",
+    "tags": [],
+    "featured": false,
+    "private": false,
+    "github_repo": "00685L-monitor"
   }
 ]
