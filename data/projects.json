@@ -321,5 +321,16 @@
     "featured": false,
     "private": false,
     "github_repo": "00685L-monitor"
+  },
+  {
+    "date": "2026.07",
+    "category": "",
+    "name": "2X-ETF-monitor",
+    "desc": "",
+    "url": "https://github.com/Ping-Hsun-Chiang/2X-ETF-monitor",
+    "tags": [],
+    "featured": false,
+    "private": false,
+    "github_repo": "2X-ETF-monitor"
   }
 ]
