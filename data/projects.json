@@ -332,5 +332,16 @@
     "featured": false,
     "private": false,
     "github_repo": "2X-ETF-monitor"
+  },
+  {
+    "date": "2026.07",
+    "category": "",
+    "name": "slashie-store",
+    "desc": "",
+    "url": "https://github.com/Ping-Hsun-Chiang/slashie-store",
+    "tags": [],
+    "featured": false,
+    "private": false,
+    "github_repo": "slashie-store"
   }
 ]
